@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.jboss.arquillian.extension</groupId>
+      <groupId>org.jboss.arquillian.extension.showcase</groupId>
     <artifactId>arquillian-spring-showcase-parent</artifactId>
     <version>1.0.0.Final-SNAPSHOT</version>
   </parent>
-  <groupId>org.jboss.arquillian.showcase</groupId>
+    <groupId>org.jboss.arquillian.extension.showcase</groupId>
   <artifactId>arquillian-spring-inject</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>arquillian-spring-inject</name>
