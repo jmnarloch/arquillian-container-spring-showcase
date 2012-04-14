@@ -23,12 +23,14 @@
 
     <modules>
         <module>arquillian-spring-inject</module>
+        <module>arquillian-spring-jsr330</module>
         <module>arquillian-spring-javaconfig</module>
         <module>arquillian-spring-jdbc</module>
         <module>arquillian-spring-jpa</module>
         <module>arquillian-spring-hibernate</module>
         <module>arquillian-spring-jms</module>
         <module>arquillian-spring-ejb</module>
+        <module>arquillian-spring-testng</module>
     </modules>
 
     <!-- Properties -->
