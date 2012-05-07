@@ -50,6 +50,7 @@
 
         <!-- Arquillian Core common Deps, Test related -->
         <version.junit_junit>4.8.1</version.junit_junit>
+        <version.testng_testng>6.5.2</version.testng_testng>
         <version.mockito_all>1.8.3</version.mockito_all>
 
         <version.spring_framework>3.1.1.RELEASE</version.spring_framework>
@@ -74,6 +75,13 @@
             </dependency>
 
             <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${version.testng_testng}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>${version.mockito_all}</version>
@@ -95,6 +103,12 @@
             <dependency>
                 <groupId>org.jboss.arquillian.junit</groupId>
                 <artifactId>arquillian-junit-container</artifactId>
+                <version>${version.arquillian}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.testng</groupId>
+                <artifactId>arquillian-testng-container</artifactId>
                 <version>${version.arquillian}</version>
             </dependency>
 
@@ -236,27 +250,16 @@
             <id>JBoss Repository</id>
             <name>JBoss Repository</name>
             <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
         </repository>
 
         <repository>
             <id>SpringSource Repository</id>
             <name>SpringSource Repository</name>
             <url>http://repo.springsource.org/release</url>
-        </repository>
-
-        <repository>
-            <id>JBoss Deprecated Repository</id>
-            <name>JBoss Deprecated Maven Repository</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/deprecated/</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
         </repository>
     </repositories>
 
