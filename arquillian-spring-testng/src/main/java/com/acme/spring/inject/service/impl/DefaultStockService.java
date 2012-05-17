@@ -26,8 +26,8 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
- * <p>A default implementation of {@link com.acme.spring.inject.service.StockService}, it simply delegates all operations to underlying {@link
- * com.acme.spring.inject.repository.StockRepository}.</p>
+ * <p>A default implementation of {@link com.acme.spring.inject.service.StockService}, it simply delegates all
+ * operations to underlying {@link com.acme.spring.inject.repository.StockRepository}.</p>
  *
  * @author <a href="mailto:jmnarloch@gmail.com">Jakub Narloch</a>
  */

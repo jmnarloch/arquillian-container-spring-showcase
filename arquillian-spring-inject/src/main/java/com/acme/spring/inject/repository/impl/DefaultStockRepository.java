@@ -76,14 +76,14 @@ public class DefaultStockRepository implements StockRepository {
         validateNoNull(stock, "stock");
         validateNotEmpty(stock.getSymbol(), "symbol");
 
-        for(Map.Entry<String, Stock> entry : stockMap.entrySet()) {
-            
-            if(entry.getValue() == stock) {
-                
+        for (Map.Entry<String, Stock> entry : stockMap.entrySet()) {
+
+            if (entry.getValue() == stock) {
+
                 stockMap.remove(entry.getKey());
             }
         }
-        
+
         stockMap.put(stock.getSymbol(), stock);
     }
 

@@ -32,27 +32,21 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${version.spring_framework}</version>
         </dependency>
 
-        <!-- org.jboss.arquillian -->
         <dependency>
             <groupId>org.jboss.arquillian.testng</groupId>
             <artifactId>arquillian-testng-container</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.arquillian.extension</groupId>
-            <artifactId>arquillian-spring-3</artifactId>
-            <version>${version.arquillian.spring}</version>
-            <scope>test</scope>
+            <artifactId>arquillian-service-deployer-spring-3</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

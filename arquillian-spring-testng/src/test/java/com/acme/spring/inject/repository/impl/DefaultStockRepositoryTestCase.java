@@ -20,7 +20,7 @@ import com.acme.spring.inject.Deployments;
 import com.acme.spring.inject.domain.Stock;
 import com.acme.spring.inject.repository.StockRepository;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.spring.annotations.SpringConfiguration;
+import org.jboss.arquillian.spring.test.annotation.SpringConfiguration;
 import org.jboss.arquillian.testng.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.springframework.beans.factory.annotation.Autowired;
