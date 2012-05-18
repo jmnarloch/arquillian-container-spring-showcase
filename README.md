@@ -34,4 +34,4 @@ TBD
 
 ## TestNG example
 
-TBD
+Example of running the tests using the TestNG.
