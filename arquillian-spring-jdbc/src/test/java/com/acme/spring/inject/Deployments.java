@@ -76,9 +76,10 @@ public final class Deployments {
 
         ArrayList<File> files = new ArrayList<File>();
 
-        files.addAll(resolveDependencies("org.springframework:spring-context"));
-        files.addAll(resolveDependencies("org.springframework:spring-jdbc"));
-        files.addAll(resolveDependencies("org.springframework:spring-tx"));
+        files.addAll(resolveDependencies("org.springframework:spring-context:3.1.1.RELEASE"));
+        files.addAll(resolveDependencies("org.springframework:spring-jdbc:3.1.1.RELEASE"));
+        files.addAll(resolveDependencies("org.springframework:spring-tx:3.1.1.RELEASE"));
+        files.addAll(resolveDependencies("com.h2database:h2:1.3.166"));
 
         return files.toArray(new File[files.size()]);
     }

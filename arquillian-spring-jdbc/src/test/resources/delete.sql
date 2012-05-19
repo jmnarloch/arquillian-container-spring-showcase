@@ -1,4 +1,1 @@
-
--- Deletes all records from each table
-
-delete from Stock;
+DELETE FROM Stock;

@@ -86,17 +86,6 @@ public class DefaultStockRepositoryTestCase {
     }
 
     /**
-     * <p>Sets up the test environment.</p>
-     *
-     * @throws Exception if any error occurs
-     */
-    @Before
-    public void setUp() throws Exception {
-
-        JDBCTestHelper.runScript(jdbcTemplate, "create.sql");
-    }
-
-    /**
      * <p>Tears down the test environment.</p>
      *
      * @throws Exception if any error occurs
@@ -104,7 +93,8 @@ public class DefaultStockRepositoryTestCase {
     @After
     public void tearDown() throws Exception {
 
-        JDBCTestHelper.runScript(jdbcTemplate, "drop.sql");
+        // deletes all records from database
+        JDBCTestHelper.runScript(jdbcTemplate, "delete.sql");
     }
 
     /**

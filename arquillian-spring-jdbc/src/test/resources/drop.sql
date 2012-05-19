@@ -1,4 +1,1 @@
-
--- Drops all tables
-
-drop table Stock;
+DROP TABLE Stock;
