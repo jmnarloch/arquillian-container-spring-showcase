@@ -22,7 +22,7 @@ TBD
 
 ## Hibernate
 
-TBD
+Example of testing hibernate persistence.
 
 ## JMS
 

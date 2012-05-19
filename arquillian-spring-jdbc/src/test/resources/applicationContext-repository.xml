@@ -27,6 +27,6 @@
     </jdbc:initialize-database>
 
     <!-- Scans for the beans definitions -->
-    <context:component-scan base-package="com.acme.spring.inject.repository.impl"/>
+    <context:component-scan base-package="com.acme.spring.jdbc.repository.impl"/>
 
 </beans>
