@@ -18,7 +18,7 @@ package com.acme.spring.inject;
 
 import com.acme.spring.inject.domain.Stock;
 import com.acme.spring.inject.repository.StockRepository;
-import com.acme.spring.inject.repository.impl.DefaultStockRepository;
+import com.acme.spring.inject.repository.impl.JdbcStockRepository;
 import com.acme.spring.inject.service.StockService;
 import com.acme.spring.inject.service.impl.DefaultStockService;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -56,7 +56,7 @@ public final class Deployments {
 
         return ShrinkWrap.create(WebArchive.class, "spring-test.war")
                 .addClasses(Stock.class, StockRepository.class, StockService.class,
-                        DefaultStockRepository.class, DefaultStockService.class, JDBCTestHelper.class)
+                        JdbcStockRepository.class, DefaultStockService.class, JDBCTestHelper.class)
                 .addAsWebInfResource("jbossas-ds.xml")
                 .addAsResource("applicationContext-repository.xml")
                 .addAsResource("applicationContext-service.xml")

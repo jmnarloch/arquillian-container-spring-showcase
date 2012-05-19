@@ -42,7 +42,7 @@ import java.util.List;
  * @author <a href="mailto:jmnarloch@gmail.com">Jakub Narloch</a>
  */
 @Repository
-public class DefaultStockRepository implements StockRepository {
+public class JdbcStockRepository implements StockRepository {
 
     /**
      * <p>Represents the instance of {@link JdbcTemplate} used for persistence operation.</p>
@@ -61,9 +61,9 @@ public class DefaultStockRepository implements StockRepository {
     }
 
     /**
-     * <p>Creates new instance of {@link com.acme.spring.inject.repository.impl.DefaultStockRepository}</p>
+     * <p>Creates new instance of {@link com.acme.spring.inject.repository.impl.JdbcStockRepository}</p>
      */
-    public DefaultStockRepository() {
+    public JdbcStockRepository() {
         // empty constructor
     }
 

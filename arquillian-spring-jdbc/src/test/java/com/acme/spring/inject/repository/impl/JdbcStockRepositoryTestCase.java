@@ -32,7 +32,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,13 +40,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- * <p>Tests the {@link DefaultStockRepository} class.</p>
+ * <p>Tests the {@link JdbcStockRepository} class.</p>
  *
  * @author <a href="mailto:jmnarloch@gmail.com">Jakub Narloch</a>
  */
 @RunWith(Arquillian.class)
 @SpringConfiguration("applicationContext.xml")
-public class DefaultStockRepositoryTestCase {
+public class JdbcStockRepositoryTestCase {
 
     /**
      * <p>Creates the test deployment.</p>
@@ -61,7 +60,7 @@ public class DefaultStockRepositoryTestCase {
     }
 
     /**
-     * <p>Injected {@link DefaultStockRepository}.</p>
+     * <p>Injected {@link JdbcStockRepository}.</p>
      */
     @Autowired
     private StockRepository stockRepository;
@@ -95,7 +94,7 @@ public class DefaultStockRepositoryTestCase {
     }
 
     /**
-     * <p>Tests the {@link DefaultStockRepository#save(Stock)} method.</p>
+     * <p>Tests the {@link JdbcStockRepository#save(Stock)} method.</p>
      */
     @Test
     public void testSave() {
@@ -117,7 +116,7 @@ public class DefaultStockRepositoryTestCase {
     }
 
     /**
-     * <p>Tests the {@link DefaultStockRepository#update(Stock)} method.</p>
+     * <p>Tests the {@link JdbcStockRepository#update(Stock)} method.</p>
      */
     @Test
     public void testUpdate() throws Exception {
@@ -136,7 +135,7 @@ public class DefaultStockRepositoryTestCase {
     }
 
     /**
-     * <p>Tests the {@link DefaultStockRepository#get(long)} method.</p>
+     * <p>Tests the {@link JdbcStockRepository#get(long)} method.</p>
      */
     @Test
     public void testGet() throws Exception {
@@ -151,7 +150,7 @@ public class DefaultStockRepositoryTestCase {
     }
 
     /**
-     * <p>Tests the {@link DefaultStockRepository#getBySymbol(String)} method.</p>
+     * <p>Tests the {@link JdbcStockRepository#getBySymbol(String)} method.</p>
      */
     @Test
     public void testGetBySymbol() throws Exception {
@@ -166,7 +165,7 @@ public class DefaultStockRepositoryTestCase {
     }
 
     /**
-     * <p>Tests the {@link DefaultStockRepository#getAll()} method.</p>
+     * <p>Tests the {@link JdbcStockRepository#getAll()} method.</p>
      */
     @Test
     public void testGetAll() throws Exception {
