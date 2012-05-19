@@ -69,7 +69,7 @@ public class DefaultStockServiceTestCase {
     public void testSave() {
 
         Stock acme = createStock("Acme", "ACM", 123.21D, new Date());
-        Stock redhat = createStock("Redhat", "RHC", 59.61D, new Date());
+        Stock redhat = createStock("Red Hat", "RHC", 59.61D, new Date());
 
         stockService.save(acme);
         stockService.save(redhat);
@@ -151,7 +151,7 @@ public class DefaultStockServiceTestCase {
         List<Stock> stocks = new ArrayList<Stock>();
 
         stocks.add(createStock("Acme", "ACM", 123.21D, new Date()));
-        stocks.add(createStock("Redhat", "RHC", 59.61D, new Date()));
+        stocks.add(createStock("Red Hat", "RHC", 59.61D, new Date()));
 
         return stocks;
     }

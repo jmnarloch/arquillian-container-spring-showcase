@@ -67,7 +67,7 @@ public class DefaultStockRepositoryTestCase extends Arquillian {
     public void testSave() {
 
         Stock acme = createStock("Acme", "ACM", 123.21D, new Date());
-        Stock redhat = createStock("Redhat", "RHC", 59.61D, new Date());
+        Stock redhat = createStock("Red Hat", "RHC", 59.61D, new Date());
 
         stockRepository.save(acme);
         stockRepository.save(redhat);
@@ -149,7 +149,7 @@ public class DefaultStockRepositoryTestCase extends Arquillian {
         List<Stock> stocks = new ArrayList<Stock>();
 
         stocks.add(createStock("Acme", "ACM", 123.21D, new Date()));
-        stocks.add(createStock("Redhat", "RHC", 59.61D, new Date()));
+        stocks.add(createStock("Red Hat", "RHC", 59.61D, new Date()));
 
         return stocks;
     }

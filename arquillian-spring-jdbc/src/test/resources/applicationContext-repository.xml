@@ -21,7 +21,7 @@
         <!--<property name="password" value=""/>-->
     <!--</bean>-->
 
-    <!-- initialize the data source creating the required tables -->
+    <!-- Initialize the data source by creating tables -->
     <jdbc:initialize-database data-source="dataSource">
         <jdbc:script location="classpath:create.sql"/>
     </jdbc:initialize-database>
