@@ -25,9 +25,6 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.spring.test.annotation.SpringConfiguration;
 import org.jboss.shrinkwrap.api.Archive;
 import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,6 +108,12 @@ public class DefaultStockRepositoryTestCase {
 
         assertTrue("The stock id hasn't been assigned.", acme.getId() > 0);
         assertTrue("The stock id hasn't been assigned.", redhat.getId() > 0);
+
+        List<Stock> stocks = JDBCTestHelper.retrieveAllStocks(jdbcTemplate);
+        assertEquals("Incorrect number of created stocks, 2 were expected.", 2, stocks.size());
+
+        assertStock(acme, stocks.get(0));
+        assertStock(redhat, stocks.get(1));
     }
 
     /**
@@ -119,14 +122,17 @@ public class DefaultStockRepositoryTestCase {
     @Test
     public void testUpdate() throws Exception {
 
-        List<Stock> stocks = createStocks();
-        saveStocks(stocks);
+        JDBCTestHelper.runScript(jdbcTemplate, "insert.sql");
+
+        List<Stock> stocks = JDBCTestHelper.retrieveAllStocks(jdbcTemplate);
 
         Stock acme = stocks.get(0);
-
         acme.setSymbol("ACE");
 
         stockRepository.update(acme);
+
+        stocks = JDBCTestHelper.retrieveAllStocks(jdbcTemplate);
+        assertEquals("The stock symbol hasn't been updated.", acme.getSymbol(), stocks.get(0).getSymbol());
     }
 
     /**
@@ -135,11 +141,10 @@ public class DefaultStockRepositoryTestCase {
     @Test
     public void testGet() throws Exception {
 
-        List<Stock> stocks = createStocks();
-        saveStocks(stocks);
-        Stock acme = stocks.get(0);
+        JDBCTestHelper.runScript(jdbcTemplate, "insert.sql");
+        Stock acme = createStock("Acme", "ACM", 123.21D, new Date());
 
-        Stock result = stockRepository.get(acme.getId());
+        Stock result = stockRepository.get(1L);
 
         assertNotNull("Method returned null result.", result);
         assertStock(acme, result);
@@ -151,9 +156,8 @@ public class DefaultStockRepositoryTestCase {
     @Test
     public void testGetBySymbol() throws Exception {
 
-        List<Stock> stocks = createStocks();
-        saveStocks(stocks);
-        Stock acme = stocks.get(0);
+        JDBCTestHelper.runScript(jdbcTemplate, "insert.sql");
+        Stock acme = createStock("Acme", "ACM", 123.21D, new Date());
 
         Stock result = stockRepository.getBySymbol(acme.getSymbol());
 
@@ -167,39 +171,12 @@ public class DefaultStockRepositoryTestCase {
     @Test
     public void testGetAll() throws Exception {
 
-        List<Stock> stocks = createStocks();
-        saveStocks(stocks);
+        JDBCTestHelper.runScript(jdbcTemplate, "insert.sql");
 
         List<Stock> result = stockRepository.getAll();
 
         assertNotNull("Method returned null result.", result);
         assertEquals("Incorrect number of elements.", 2, result.size());
-    }
-
-    /**
-     * <p>Creates test stocks.</p>
-     *
-     * @return list of test stocks
-     */
-    private List<Stock> createStocks() {
-
-        List<Stock> stocks = new ArrayList<Stock>();
-
-        stocks.add(createStock("Acme", "ACM", 123.21D, new Date()));
-        stocks.add(createStock("Red Hat", "RHC", 59.61D, new Date()));
-
-        return stocks;
-    }
-
-    /**
-     * <p>Fills the repository with tests data.</p>
-     */
-    private void saveStocks(List<Stock> stocks) {
-
-        for (Stock stock : stocks) {
-
-            stockRepository.save(stock);
-        }
     }
 
     /**

@@ -16,12 +16,17 @@
  */
 package com.acme.spring.inject;
 
+import com.acme.spring.inject.domain.Stock;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * <p>A helper class for executing scripts in database.</p>
@@ -40,7 +45,7 @@ public final class JDBCTestHelper {
     }
 
     /**
-     * <p>Executes the give script.</p>
+     * <p>Executes a sql script.</p>
      *
      * @param jdbcTemplate the jdbc template
      * @param fileName     the file name
@@ -71,5 +76,31 @@ public final class JDBCTestHelper {
 
             jdbcTemplate.execute(command);
         }
+    }
+
+    /**
+     * <p>Retrieves all the stocks from database, using passed {@link JdbcTemplate}.</p>
+     *
+     * @param jdbcTemplate the jdbc template to use
+     *
+     * @return list of stocks retrieved from database
+     */
+    public static List<Stock> retrieveAllStocks(JdbcTemplate jdbcTemplate) {
+
+        return jdbcTemplate.query("select id, name, symbol, value, date from Stock order by name", new RowMapper<Stock>() {
+            public Stock mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+                int index = 1;
+
+                Stock result = new Stock();
+                result.setId(rs.getLong(index++));
+                result.setName(rs.getString(index++));
+                result.setSymbol(rs.getString(index++));
+                result.setValue(rs.getBigDecimal(index++));
+                result.setDate(rs.getDate(index++));
+
+                return result;
+            }
+        });
     }
 }

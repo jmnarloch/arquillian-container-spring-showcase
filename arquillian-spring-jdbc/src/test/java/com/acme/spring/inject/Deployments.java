@@ -63,7 +63,7 @@ public final class Deployments {
                 .addAsResource("applicationContext.xml")
                 .addAsResource("create.sql")
                 .addAsResource("delete.sql")
-                .addAsResource("drop.sql")
+                .addAsResource("insert.sql")
                 .addAsLibraries(springDependencies());
     }
 

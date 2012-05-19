@@ -109,6 +109,12 @@ public class DefaultStockServiceTestCase {
 
         assertTrue("The stock id hasn't been assigned.", acme.getId() > 0);
         assertTrue("The stock id hasn't been assigned.", redhat.getId() > 0);
+
+        List<Stock> stocks = JDBCTestHelper.retrieveAllStocks(jdbcTemplate);
+        assertEquals("Incorrect number of created stocks, 2 were expected.", 2, stocks.size());
+
+        assertStock(acme, stocks.get(0));
+        assertStock(redhat, stocks.get(1));
     }
 
     /**
@@ -117,14 +123,17 @@ public class DefaultStockServiceTestCase {
     @Test
     public void testUpdate() throws Exception {
 
-        List<Stock> stocks = createStocks();
-        saveStocks(stocks);
+        JDBCTestHelper.runScript(jdbcTemplate, "insert.sql");
+
+        List<Stock> stocks = JDBCTestHelper.retrieveAllStocks(jdbcTemplate);
 
         Stock acme = stocks.get(0);
-
         acme.setSymbol("ACE");
 
         stockService.update(acme);
+
+        stocks = JDBCTestHelper.retrieveAllStocks(jdbcTemplate);
+        assertEquals("The stock symbol hasn't been updated.", acme.getSymbol(), stocks.get(0).getSymbol());
     }
 
     /**
@@ -133,11 +142,10 @@ public class DefaultStockServiceTestCase {
     @Test
     public void testGet() throws Exception {
 
-        List<Stock> stocks = createStocks();
-        saveStocks(stocks);
-        Stock acme = stocks.get(0);
+        JDBCTestHelper.runScript(jdbcTemplate, "insert.sql");
+        Stock acme = createStock("Acme", "ACM", 123.21D, new Date());
 
-        Stock result = stockService.get(acme.getId());
+        Stock result = stockService.get(1L);
 
         assertNotNull("Method returned null result.", result);
         assertStock(acme, result);
@@ -149,9 +157,8 @@ public class DefaultStockServiceTestCase {
     @Test
     public void testGetBySymbol() throws Exception {
 
-        List<Stock> stocks = createStocks();
-        saveStocks(stocks);
-        Stock acme = stocks.get(0);
+        JDBCTestHelper.runScript(jdbcTemplate, "insert.sql");
+        Stock acme = createStock("Acme", "ACM", 123.21D, new Date());
 
         Stock result = stockService.getBySymbol(acme.getSymbol());
 
@@ -165,39 +172,12 @@ public class DefaultStockServiceTestCase {
     @Test
     public void testGetAll() throws Exception {
 
-        List<Stock> stocks = createStocks();
-        saveStocks(stocks);
+        JDBCTestHelper.runScript(jdbcTemplate, "insert.sql");
 
         List<Stock> result = stockService.getAll();
 
         assertNotNull("Method returned null result.", result);
         assertEquals("Incorrect number of elements.", 2, result.size());
-    }
-
-    /**
-     * <p>Creates test stocks.</p>
-     *
-     * @return list of test stocks
-     */
-    private List<Stock> createStocks() {
-
-        List<Stock> stocks = new ArrayList<Stock>();
-
-        stocks.add(createStock("Acme", "ACM", 123.21D, new Date()));
-        stocks.add(createStock("Red Hat", "RHC", 59.61D, new Date()));
-
-        return stocks;
-    }
-
-    /**
-     * <p>Fills the repository with tests data.</p>
-     */
-    private void saveStocks(List<Stock> stocks) {
-
-        for (Stock stock : stocks) {
-
-            stockService.save(stock);
-        }
     }
 
     /**
