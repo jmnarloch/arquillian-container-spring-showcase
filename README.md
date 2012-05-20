@@ -18,7 +18,7 @@ Simple JDBC tests.
 
 ## JPA
 
-TBD
+Example of running tests of JPA persistence.
 
 ## Hibernate
 
