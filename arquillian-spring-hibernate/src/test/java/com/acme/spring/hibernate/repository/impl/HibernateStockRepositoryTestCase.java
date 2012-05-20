@@ -141,7 +141,7 @@ public class HibernateStockRepositoryTestCase {
 
         stocks = retrieveAllStocks(getSession());
 
-        getSession().beginTransaction().commit();
+        getSession().getTransaction().commit();
 
         assertEquals("The stock symbol hasn't been updated.", acme.getSymbol(), stocks.get(0).getSymbol());
     }
