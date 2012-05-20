@@ -30,7 +30,7 @@ TBD
 
 ## EJB - lookup and injection
 
-TBD
+Example of lookuping stateless session bean (SLSB) and autowiring it in test case.
 
 ## TestNG example
 
