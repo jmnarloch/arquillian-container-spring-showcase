@@ -26,7 +26,13 @@ Example of testing hibernate persistence.
 
 ## JMS
 
-TBD
+Example of sending JMS messages using Spring's JmsTemplate
+
+Note: in other to successfully run this example in remote JBoss AS 7.1.1 please start the server using fallowing command:
+
+```
+./standalone.sh --server-config=standalone-full.xml
+```
 
 ## EJB - lookup and injection
 
