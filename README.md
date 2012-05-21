@@ -1,5 +1,7 @@
 #Showcase for Arquillian Spring Container
 
+All the examples has been tested with JBoss 7.1.1 in managed and remote configuration.
+
 ## Beans injection
 
 An example of simple bean injection into the test case.
